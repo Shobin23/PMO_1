@@ -1,0 +1,135 @@
+model RPD.ViewModels.BillingInformationList
+
+@{
+    ViewBag.Title = "SearchBillingID";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/content/GridStyle.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body style="margin-top:0" onload="showAllNavLink();showProjectManagementChildItem();showManageBillingChildItem();">
+    @{var items = Model.Items; }
+
+    <div class="grid">
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().billlingid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().invoicebackupformatid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().customerid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().purchaseorder)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().jobnum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().terms)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().contact)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().company)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().defaultownerid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().address1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().address2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().city)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().stateprovince)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().postalcode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().useworkorderbilling)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => items.First().status)
+                </th>
+            </tr>
+            @foreach (var item in items)
+            {
+                using (Html.BeginForm(new { @customerid = item.customerid, @billlingid = item.billlingid }))
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.billlingid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.invoicestyle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.customer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.purchaseorder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.jobnum)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.terms)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.company)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.contact)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.defaultowner)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.address1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.address2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.city)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.stateprovincecode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.postalcode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.useworkorderbilling)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.status)
+                        </td>
+                        <td>
+                            <input type="submit" value="Edit" />
+                        </td>
+                    </tr>
+                }
+            }
+        </table>

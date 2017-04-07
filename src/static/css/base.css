@@ -1,0 +1,8 @@
+.nav_wrapper{
+  width:100%;
+  background-color: #FFF; //Change this to the background color of your nav bar
+}
+.nav_bar{
+  width: 1500px; //Change this to the actual width of the page content
+  margin: 0 auto;
+}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<form id="new_user_form">
+    <div class="container">
+    
+    <div class="row">
+            <div class="col-xs-3">
+                <div class="form-group">
+              <label for="active">Active:</label>&emsp;&emsp; 
+           <select class="form-control">
+             <option value="" id="sel">Status</option>
+    <option value="NEW">NEW</option>
+    <option value="OPEN">OPEN</option>
+    <option value="HOLD">HOLD</option>
+    <option value="RELEASE">RELEASE</option>  
+             </select>
+ </div>
+ <input type="text" class="form-control" id="email" placeholder="Enter email">
+ <input type="text" class="form-control" id="user" placeholder="Enter user">
+ <input type="text" class="form-control" id="pwd" placeholder="Enter pwd">
+        <input type='submit' class='btn btn-default' value='Create Post' />
+</div>
+        </div>
+        </div>
+</form>
+</body>
+<script type="text/javascript">
+    $(document).on('submit','#new_user_form',function(e){
+    e.preventDefault();
+
+    $.ajax({
+    type:'POST',
+    url:'/user/create/',
+    data:{
+    name:$('#user').val(),
+    email:$('#email').val(),
+    password:$('#password').val(),
+
+    },
+    success:function(){
+    }
+    });
+    });
+
+</script>
+{% endblock content %}

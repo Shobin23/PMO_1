@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+
+table { border-collapse:separate; border-spacing:0;border-top: 1px solid grey; }
+        td, th {
+            margin:10;
+            border:1px solid grey;
+            white-space:nowrap;
+            border-top-width:0px;
+        }
+        #mon {
+            width: 500px;
+            overflow-x:scroll;
+            margin-left:13em;
+            overflow-y:visible;
+            padding:0;
+        }
+        .headcol {
+            position:absolute;
+            width:14em;
+            left:0;
+            top:auto;
+            border-top-width:1px; /*only relevant for first row*/
+            margin-top:-1px; /*compensate for top border*/
+        }
+        .headcol:before {content: '';}
+        .long { background:#F8F8FF; letter-spacing:1em;}
+        .short{background:#FFF8DC; word-spacing:12em; }
+</style>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+
+
+<form id="new_user_form">
+    <div class="container">
+
+    <div class="row">
+            <div class="col-xs-3">
+                <div class="form-group">
+              <label for="active">Active:</label>
+           <select class="form-control"id="sel">
+             <option value="">Status</option>
+    <option value="NEW">NEW</option>
+    <option value="OPEN">OPEN</option>
+    <option value="HOLD">HOLD</option>
+    <option value="RELEASE">RELEASE</option>
+             </select>
+    </div>
+
+</div>
+        </div>
+        </div>
+  <div class="form-group">
+ <label for="end">SOW Starst Date:</label>
+ <input type='text' class="form-control" id="datepicker" />
+
+<div class="form-group">
+<label for="bu">BU:</label>
+    <input type="text" class="form-control" id="bu" placeholder="Enter BU">
+    </div>
+ <input type="text" class="form-control" id="email" placeholder="Enter email">
+ <input type="text" class="form-control" id="user" placeholder="Enter user">
+
+<input type='submit' class='btn btn-default' value='Create Post' />
+</div>
+
+<div class="form-group">
+ <label for="end">SOW Start Date:</label>
+  <input type='text' class="form-control" id="from-datepicker" />
+	</div>
+
+<div class="form-group">
+    <label for="month">YEAR:</label>
+<div id="mon">
+<table>
+        <tr><th class="headcol">YEAR</th><td class="short"> APR        		MAY		JUN		JULY		AUG		SEP		OCT		NOV		DEC		JAN		FEB		MAR</td></tr>
+        <tr><th class="headcol"><input type="text" name="year" value="2016-2017"></th><td class="long"> <input type="text" name="ap16" value="Apr"> <input type="text" name="ma16" value="May"> <input type="text" name="ju16" value="Jun"> <input type="text" name="jul16" value="Jul"> <input type="text" name="au16" value="Aug"> <input type="text" name="se16" value="Sep"> <input type="text" name="oc16" value="Oct"> <input type="text" name="no16" value="Nov"> <input type="text" name="de16" value="Dec"> <input type="text" name="ja17" value="Jan"> <input type="text" name="fe17" value="Feb"> <input type="text" name="mar17" value="Mar"></td></tr>
+        <tr><th class="headcol">prob</th><td class="long"><input type="text" name="apr16" value="Apr"> <input type="text" name="may16" value="May"> <input type="text" name="jun16" value="Jun"> <input type="text" name="july16" value="Jul"> <input type="text" name="aug16" value="Aug"> <input type="text" name="sep16" value="Sep"> <input type="text" name="oct16" value="Oct"> <input type="text" name="nov16" value="Nov"> <input type="text" name="dec16" value="Dec"> <input type="text" name="jan17" value="Jan"> <input type="text" name="feb17" value="Feb"> <input type="text" name="march17" value="Mar"></td></tr>
+
+
+</table>
+</div>
+</div>
+
+</form>
+</body>
+<script type="text/javascript">
+
+$(function() {
+var fromdate;
+
+    $("#from-datepicker").datepicker({
+        format: 'yyyy-mm-dd'
+    });
+    $("#from-datepicker").on("change", function () {
+        fromdate = $(this).val();
+    });
+
+    //var e = document.getElementById("bu");
+    //var strUser = e.options[e.selectedIndex].value;
+
+    $(document).on('submit','#new_user_form',function(e){
+    e.preventDefault();
+
+    $.ajax({
+    type:'POST',
+    url:'/user/create/',
+    data:{
+    name:$('#bu').val(),
+    email:$('#email').val(),
+    date:fromdate
+
+    },
+    success:function(){
+    }
+    });
+    });
+    });
+
+</script>
+
+{% endblock content %}

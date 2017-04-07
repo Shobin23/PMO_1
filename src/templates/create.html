@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>PMO Automation</title>
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="calender.css">
+ <link rel="stylesheet" href="/resources/demos/style.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js">
+</script>  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+
+<script> 
+ $( function() {    $( "#datepicker" ).datepicker({      changeMonth: true,      changeYear: true    });  } ); 
+ $( function() {    $( "#datepicker1" ).datepicker({      changeMonth: true,      changeYear: true    });  } ); 
+ </script>
+<link rel="stylesheet" href="out.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+
+<style>
+
+table { border-collapse:separate; border-spacing:0;border-top: 1px solid grey; }
+        td, th {
+            margin:10;
+            border:1px solid grey;
+            white-space:nowrap;
+            border-top-width:0px;
+        }
+        #mon {
+            width: 500px;
+            overflow-x:scroll;  
+            margin-left:13em;
+            overflow-y:visible;
+            padding:0;
+        }
+        .headcol {
+            position:absolute;
+            width:14em;
+            left:0;
+            top:auto;
+            border-top-width:1px; /*only relevant for first row*/
+            margin-top:-1px; /*compensate for top border*/
+        }
+        .headcol:before {content: '';}
+        .long { background:#F8F8FF; letter-spacing:1em;}
+        .short{background:#FFF8DC; word-spacing:12em; }
+</style>
+</head>
+<div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+    <form id="new_user_form">
+
+    <div class="row">
+            <div class="col-xs-3">
+                <div class="form-group">
+              <label for="active">Active:</label>&emsp;&emsp; 
+           <select class="form-control">
+             <option value="">Status</option>
+    <option value="NEW">NEW</option>
+    <option value="OPEN">OPEN</option>
+    <option value="HOLD">HOLD</option>
+    <option value="RELEASE">RELEASE</option>  
+             </select>
+ </div>
+<div class="form-group">
+<label for="bu">BU:</label>		&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="bu" placeholder="Enter BU">
+    </div>
+<div class="form-group">
+<label for="is_org">IS Org:</label>		&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="is_org" placeholder="Enter IS Org">
+    </div>
+<div class="form-group">
+<label for="fun_area">Functional Area:</label>		&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="fun_area" placeholder="Enter Functional Area">
+    </div>
+<div class="form-group">
+<label for="stakeholder">IS Stakeholder:</label>		&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="stakeholder" placeholder="Enter IS Stakeholder">
+    </div>
+<div class="form-group">
+<label for="area">Area:</label>		&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="area" placeholder="Enter Area">
+    </div>
+    <div class="form-group">
+<label for="scope">Scope:</label>		&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="scope" placeholder="Enter Scope">
+    </div>
+    <div class="form-group">
+<label for="deal">Deal Close:</label>		&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="deal" placeholder="Enter Deal Close">
+    </div>
+<div class="form-group">
+<label for="contract">Contracted/Pipeline:</label>		&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="contract" placeholder="Enter Contracted/Pipeline">
+    </div>
+<div class="form-group">
+    <label for="prob">Probability:</label>&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp; &emsp; &emsp;
+    <input type="text" class="form-control" id="prob" placeholder="probability">
+    </div>
+    
+</div>
+            <div class="col-xs-3">
+
+    <div class="form-group">
+<label for="name">Invoice Name:</label>		&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="name" placeholder="Enter invoice name">
+    </div>
+ <div class="form-group">
+    <label for="sname">SOW Name:</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="sname" placeholder="Enter SOW name">
+    </div>
+<div class="form-group">
+                    <label for="pid">Project Id:</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+    <input type="text" class="form-control" id="pid" placeholder="Enter project id">
+    </div>
+<div class="form-group">
+    <label for="pno">Po Number:</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp;&emsp; &emsp;
+    <input type="number" class="form-control" id="pno" placeholder="Enter po number">
+    </div> 
+<div class="form-group">
+    <label for="stype">SOW Type:</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp; &emsp;
+      
+    <input type="text" class="form-control" id="stype" placeholder="Enter SOW Type">
+    </div>
+ <div class="form-group">
+ <label for="end">SOW Start Date:</label>&emsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+     <input type='text' class="form-control" id="datepicker" />
+	</div>
+<div class="form-group">
+    <label for="end">SOW End Date:</label>&emsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+    <input type="text" class="form-control" id="datepicker1"/>
+    </div>    
+<div class="form-group">
+    <label for="svalue">SOW Value:</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="svalue" placeholder="Enter Sow value">
+    </div>
+
+    <div class="form-group">
+    <label for="total">Total(2016-17):</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="total" placeholder="Enter total">
+    </div>           
+            </div>
+            <div class="col-xs-6">
+<div class="form-group">
+    <label for="month">YEAR:</label>
+<div id="mon">
+<table>
+        <tr><th class="headcol">YEAR</th><td class="short"> APR        		MAY		JUN		JULY		AUG		SEP		OCT		NOV		DEC		JAN		FEB		MAR</td></tr>	
+        <tr><th class="headcol"><input type="text" name="year" value="2016-2017"></th><td class="long"> <input type="text" name="ap16" value="Apr"> <input type="text" name="ma16" value="May"> <input type="text" name="ju16" value="Jun"> <input type="text" name="jul16" value="Jul"> <input type="text" name="au16" value="Aug"> <input type="text" name="se16" value="Sep"> <input type="text" name="oc16" value="Oct"> <input type="text" name="no16" value="Nov"> <input type="text" name="de16" value="Dec"> <input type="text" name="ja17" value="Jan"> <input type="text" name="fe17" value="Feb"> <input type="text" name="mar17" value="Mar"></td></tr>
+        <tr><th class="headcol">prob</th><td class="long"><input type="text" name="apr16" value="Apr"> <input type="text" name="may16" value="May"> <input type="text" name="jun16" value="Jun"> <input type="text" name="july16" value="Jul"> <input type="text" name="aug16" value="Aug"> <input type="text" name="sep16" value="Sep"> <input type="text" name="oct16" value="Oct"> <input type="text" name="nov16" value="Nov"> <input type="text" name="dec16" value="Dec"> <input type="text" name="jan17" value="Jan"> <input type="text" name="feb17" value="Feb"> <input type="text" name="march17" value="Mar"></td></tr>
+               
+        
+</table>
+</div>
+</div>
+
+    <div class="form-group">
+    <label for="q1">Total(Q1FY):</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="q1" placeholder="Enter q1 value">
+    </div>
+    <div class="form-group">
+    <label for="q2">Total(Q2FY):</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="q2" placeholder="Enter q2 value">
+    </div>
+    <div class="form-group">
+    <label for="q3">Total(Q3FY):</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="q3" placeholder="Enter q3 value">
+    </div>
+<div class="form-group">
+    <label for="q4">Total(Q4FY):</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="q4" placeholder="Enter q4 value">
+    </div>
+<div class="form-group">
+    <label for="q11">Total(Q1):</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="q11" placeholder="Enter q1 value">
+    </div>
+    <div class="form-group">
+    <label for="q12">Total(Q2):</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="q12" placeholder="Enter q2 value">
+    </div>
+    <div class="form-group">
+    <label for="q13">Total(Q3):</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="q13" placeholder="Enter q3 value">
+    </div>
+<div class="form-group">
+    <label for="q14">Total(Q4):</label>&emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+    <input type="text" class="form-control" id="q14" placeholder="Enter q4 value">
+
+    </div>
+</div>
+</div>
+
+</form>
+
+
+</div>
+</html>

@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<html>
+<head>
+  <title>PMO Automation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=15">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel ='stylesheet' href='{% static "css/base.css" %}'/>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<div id="menucontainer">
+<nav class="navbar navbar-inverse" id="mynav">
+   <a class="navbar-brand" href="#">Project Management Automation</a>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Invoice List</a></li>
+        <li><a href="#">Roster</a></li>
+        <li><a href="#">Allocation</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+<div class="'container">
+    {% block content%}
+
+    {% endblock content%}
+</div>
+</html>
+
